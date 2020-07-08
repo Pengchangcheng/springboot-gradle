@@ -1,0 +1,4 @@
+spring:
+  profiles: prd
+server:
+  port: 8083
