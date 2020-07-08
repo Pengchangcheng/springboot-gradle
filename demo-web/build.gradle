@@ -1,0 +1,11 @@
+archivesBaseName = 'demo-web'
+
+jar.enabled = true
+bootJar.enabled = true
+
+dependencies {
+    compile project(':demo-service')
+    compile('org.springframework.boot:spring-boot-starter')
+    compile('org.springframework.boot:spring-boot-starter-web')
+}
+
