@@ -1,11 +1,34 @@
-archivesBaseName = 'demo-web'
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'java'
+}
 
-jar.enabled = true
 bootJar.enabled = true
 
-dependencies {
-    compile project(':demo-service')
-    compile('org.springframework.boot:spring-boot-starter')
-    compile('org.springframework.boot:spring-boot-starter-web')
+group = 'com.pcc'
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    maven {
+        url "http://maven.aliyun.com/nexus/content/groups/public"
+    }
 }
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'mysql:mysql-connector-java'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:1.3.2'
+    //同一个构建中可以建立工程依赖，一个工程的jar包可以提供给另外一个工程使用。例如我们可以让work-order工程依赖于log-merge工程的jar包。这样Gradle在构建work-order之前总是会先构建log-merge工程。
+    api project(":demo-service")
+}
+
+//test {
+//    useJUnitPlatform()
+//}
 

@@ -1,8 +1,22 @@
-/* 子模块项目名，jar名 */
-archivesBaseName = 'demo-common'
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'java'
+}
 
-jar.enabled = true
-/* 需要org.springframework.boot插件 不需要打包成可执行的jar*/
-bootJar.enabled = false
+jar.enabled=true
+bootJar.enabled=false
 
+group = 'com.pcc'
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = 1.8
 
+repositories {
+    maven {
+        url "http://maven.aliyun.com/nexus/content/groups/public"
+    }
+}
+
+dependencies {
+
+}
